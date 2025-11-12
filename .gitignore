@@ -48,3 +48,9 @@ temp/
 # LaTeX sources
 *.tex
 
+Ian Face Scan.bin
+.gitignore
+Suzanne.bin
+evangelion-unit_01nanoblock/license.txt
+Suzanne.gltf
+Ian Face Scan.gltf

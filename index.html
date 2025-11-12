@@ -64,13 +64,14 @@
         </div>
 
         <div class="hero-wave">
-            <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg viewBox="0 0 2400 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
                 <path fill="currentColor" fill-opacity="1"
-                      d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                      d="M0,216L96,246.4C192,276.8,384,337.6,576,348.8C768,362,960,328.8,1152,300.8C1344,273.6,1536,252,1728,268.8C1920,285.6,2112,340.8,2304,338.4C2496,336,2688,276,2784,248L2880,216L2880,600L2784,600C2688,600,2496,600,2304,600C2112,600,1920,600,1728,600C1536,600,1344,600,1152,600C960,600,768,600,576,600C384,600,192,600,96,600L0,600Z">
                 </path>
             </svg>
         </div>
     </section>
+
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -95,6 +96,26 @@
         </div>
     </section>
 
+    <!-- 3D Model Showcase -->
+    <section id="model" class="model-section">
+        <div class="container">
+            <div class="model-wrapper">
+                <div class="model-viewer">
+                    <div class="model-overlay" id="model-overlay">
+                        <div class="loader" role="presentation"></div>
+                        <p>Loading Evangelion Unit-01...</p>
+                    </div>
+                    <canvas id="model-viewer" aria-label="3D model viewer"></canvas>
+                </div>
+                <p class="model-caption">
+                    <a href="https://sketchfab.com/3d-models/evangelion-unit-01nanoblock-4cae7ee20ebc4559b9d3d2b029b1a140" target="_blank" rel="noopener">
+                        Model by adiobrick on Sketchfab
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
@@ -110,7 +131,6 @@
                         <span class="skill-tag">Time Series Modeling</span>
                         <span class="skill-tag">Model Deployment</span>
                         <span class="skill-tag">Point Cloud/Mesh Processing</span>
-                        <span class="skill-tag">Explainability</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -397,7 +417,15 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.149.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.149.0/examples/jsm/"
+          }
+        }
+        </script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
 

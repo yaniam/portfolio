@@ -1,3 +1,7 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
 // ==================== //
 // Mobile Navigation Toggle
 // ==================== //
@@ -207,6 +211,122 @@ if ('IntersectionObserver' in window) {
 }
 
 // ==================== //
+// EVA-01 Three.js Viewer
+// ==================== //
+const modelCanvas = document.getElementById('model-viewer');
+const modelOverlay = document.getElementById('model-overlay');
+
+if (modelCanvas) {
+    const viewer = modelCanvas.closest('.model-viewer');
+    const scene = new THREE.Scene();
+    scene.background = null;
+
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.set(0.8, 1.6, 4.2);
+
+    const renderer = new THREE.WebGLRenderer({
+        canvas: modelCanvas,
+        antialias: true,
+        alpha: true
+    });
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setClearColor(0x000000, 0);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.enablePan = true;
+    controls.enableZoom = false;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.6;
+    controls.minDistance = 2;
+    controls.maxDistance = 9;
+
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x1a1a25, 1.1);
+    scene.add(hemi);
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.1);
+    keyLight.position.set(6, 10, 8);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.set(2048, 2048);
+    scene.add(keyLight);
+
+    const loader = new GLTFLoader().setPath('evangelion-unit_01nanoblock/');
+    loader.load(
+        'scene.gltf',
+        (gltf) => {
+            const model = gltf.scene;
+            normalizeModel(model);
+            scene.add(model);
+
+            if (modelOverlay) {
+                modelOverlay.classList.add('hidden');
+            }
+        },
+        undefined,
+        (error) => {
+            console.error('Failed to load Evangelion Unit-01 model:', error);
+            if (modelOverlay) {
+                const message = modelOverlay.querySelector('p');
+                if (message) {
+                    message.textContent = 'Unable to load Evangelion Unit-01';
+                }
+            }
+        }
+    );
+
+    function normalizeModel(model) {
+        const box = new THREE.Box3().setFromObject(model);
+        const size = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+        model.position.sub(center);
+
+        const maxAxis = Math.max(size.x, size.y, size.z);
+        const scale = 3 / maxAxis;
+        model.scale.setScalar(scale);
+
+        const finalHeight = size.y * scale;
+        const yLift = finalHeight * 0.4;
+        model.position.y += yLift;
+
+        const targetY = finalHeight * 0.1;
+        controls.target.set(0, targetY, 0);
+        camera.position.set(1, targetY + finalHeight * 0.18, 5.6);
+        camera.updateProjectionMatrix();
+        controls.update();
+    }
+
+    function resizeRenderer() {
+        if (!viewer) return;
+        const width = Math.max(viewer.clientWidth || viewer.offsetWidth || 240, 240);
+        const ratio = 4 / 3;
+        let height = viewer.clientHeight || viewer.offsetHeight;
+        if (!height) {
+            height = width * ratio;
+        }
+        height = Math.max(height, width * ratio);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    }
+
+    resizeRenderer();
+    window.addEventListener('resize', resizeRenderer);
+
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+
+    animate();
+}
+
+// ==================== //
 // Add Particle Background Effect (Optional)
 // ==================== //
 function createParticles() {
@@ -294,4 +414,4 @@ console.log('%c Built with ❤️ for Machine Learning & Data Engineering', 'col
       }
     }
   })();
-  
+
