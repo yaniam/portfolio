@@ -82,35 +82,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ==================== //
-// Contact Form Handling
-// ==================== //
-const contactForm = document.getElementById('contact-form');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
-
-    // Here you would typically send the data to a backend service
-    // For now, we'll just show a success message
-    alert(`Thank you, ${name}! Your message has been received. I'll get back to you at ${email} soon.`);
-
-    // Reset form
-    contactForm.reset();
-
-    // In a real application, you might want to integrate with services like:
-    // - Netlify Forms (add data-netlify="true" to form element)
-    // - FormSpree
-    // - EmailJS
-    // - Your own backend API
-});
-
-// ==================== //
 // Intersection Observer for Animations
 // ==================== //
 const observerOptions = {
@@ -379,40 +350,3 @@ window.addEventListener('scroll', debounce(() => {
 
 console.log('%c Portfolio Website Loaded Successfully! 🚀', 'color: #6366f1; font-size: 16px; font-weight: bold;');
 console.log('%c Built with ❤️ for Machine Learning & Data Engineering', 'color: #8b5cf6; font-size: 12px;');
-
-(function () {
-    const KEY = 'theme';
-    const root = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
-    const icon = btn?.querySelector('i');
-  
-    // Determine starting theme (saved > OS preference > light)
-    const saved = localStorage.getItem(KEY);
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const startTheme = saved || (prefersDark ? 'dark' : 'light');
-    setTheme(startTheme);
-  
-    // Toggle on click
-    btn?.addEventListener('click', () => {
-      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      setTheme(next);
-      localStorage.setItem(KEY, next);
-    });
-  
-    function setTheme(mode) {
-      root.setAttribute('data-theme', mode);
-      if (!icon) return;
-      if (mode === 'dark') {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        btn.setAttribute('aria-label', 'Switch to light mode');
-        btn.title = 'Switch to light mode';
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        btn.setAttribute('aria-label', 'Switch to dark mode');
-        btn.title = 'Switch to dark mode';
-      }
-    }
-  })();
-

@@ -8,6 +8,20 @@
     <title>Ian Porto e Mello - ML | Data Engineering | Computer Vision Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function () {
+            const KEY = 'theme';
+            let stored = null;
+            try {
+                stored = localStorage.getItem(KEY);
+            } catch (err) {
+                console.warn('Theme storage unavailable:', err);
+            }
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initial = stored || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', initial);
+        })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -365,52 +379,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect!</h3>
-                    <p>I’m happy to discuss opportunities in machine learning, computer vision, data engineering, or collaborative research focused on impactful AI systems.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:ianporto25@gmail.com">ianporto25@gmail.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-linkedin"></i>
-                            <a href="https://www.linkedin.com/in/ian-porto-mello" target="_blank">linkedin.com/in/ian-porto-mello</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-github"></i>
-                            <a href="https://github.com/yaniam" target="_blank">github.com/yaniam</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Brasília, Federal District, Brazil</span>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -426,6 +394,46 @@
           }
         }
         </script>
+    <script>
+        (function () {
+            const KEY = 'theme';
+            const root = document.documentElement;
+            const btn = document.getElementById('theme-toggle');
+
+            if (!btn) return;
+
+            const icon = btn.querySelector('i');
+            const updateIcon = (mode) => {
+                if (!icon) return;
+                if (mode === 'dark') {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    btn.setAttribute('aria-label', 'Switch to light mode');
+                    btn.title = 'Switch to light mode';
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    btn.setAttribute('aria-label', 'Switch to dark mode');
+                    btn.title = 'Switch to dark mode';
+                }
+            };
+
+            const applied = root.getAttribute('data-theme') || 'light';
+            updateIcon(applied);
+
+            btn.addEventListener('click', () => {
+                const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                const next = current === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                updateIcon(next);
+                try {
+                    localStorage.setItem(KEY, next);
+                } catch (err) {
+                    console.warn('Unable to persist theme:', err);
+                }
+            });
+        })();
+    </script>
     <script type="module" src="script.js"></script>
 </body>
 </html>
