@@ -2,6 +2,14 @@
 /* CSS Variables */
 /* ==================== */
 :root {
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+html[data-theme="light"] {
     --primary-color: #3f6d4e;
     --secondary-color: #965fd4;
     --accent-color: #8bd450;
@@ -10,103 +18,50 @@
     --bg-light: #f3f7ee;
     --bg-white: #ffffff;
     --border-color: rgba(29, 26, 47, 0.12);
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
-}
-/* THEME TOKENS */
-:root {
+
     --bg: #ffffff;
     --text: #0f1226;
     --muted: #6b7280;
-    --accent: #3b82f6;
-    --surface: #f7f7fb;
+    --accent: #3f6d4e;
+    --surface: #f3f7ee;
     --card: #ffffff;
-    --border: #e5e7eb;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0b0e17;
-      --text: #e6e9f3;
-      --muted: #a3acc2;
-      --accent: #60a5fa;
-      --surface: #0e1324;
-      --card: #12172a;
-      --border: #1f273e;
-    }
-  }
-  
-  /* Explicit theme override via [data-theme] */
-/* ----- EVA-00 (Light) ----- */
-html[data-theme="light"] {
-    /* Base */
-    --bg: #ffffff;          /* White */
-    --text: #0f1226;        /* Neutral dark for readability */
-    --muted: #16537e;       /* Deep blue (muted text/icons) */
-  
-    /* Brand accents */
-    --accent: #2986cc;      /* Primary blue */
-    --accent-2: #16537e;    /* Secondary deep blue */
-    --warn: #f1c232;        /* Amber */
-    --warn-2: #ffd966;      /* Light amber */
-  
-    /* Surfaces */
-    --surface: #ffffff;     /* Section backgrounds / hero wave */
-    --card: #ffffff;        /* Cards */
-    --border: #e5e7eb;      /* Subtle border */
-  }
-  
-  /* Optional: component coloring that uses the new tokens */
-  .nav-link { color: var(--accent-2); }
-  .nav-link:hover { color: var(--accent); }
-  
-  .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .btn-primary:hover { filter: brightness(0.95); }
-  .btn-secondary { color: var(--accent); border: 1px solid var(--accent); }
-  
-  .hero-quote { background: #f7fbff; border-left-color: var(--accent); } /* soft blue tint */
+    --border: rgba(29, 26, 47, 0.12);
+}
 
- /* ----- EVA-01 (Dark) ----- */
 html[data-theme="dark"] {
-    /* Base */
-    --bg: #000000;          /* Black */
-    --text: #b797db;        /* Lavender (primary text) */
-    --muted: #765899;       /* Deep purple (muted text/icons) */
-  
-    /* Brand accents */
-    --accent: #41bb42;      /* EVA green */
-    --accent-2: #e8790c;    /* EVA orange */
-    --warn: #e8790c;
-    --warn-2: #765899;      /* Use purple as secondary highlight */
-  
-    /* Surfaces (keep near-black for contrast; outline with purple) */
-    --surface: #000000;     /* Section backgrounds / hero wave */
-    --card: #000000;        /* Cards */
-    --border: #765899;      /* Subtle purple outline */
-  }
-  
-  /* Optional: dark component tweaks */
-  .nav-link { color: var(--text); }
-  .nav-link:hover { color: var(--accent); }
-  
-  .btn-primary { background: var(--accent); border-color: var(--accent); color: #000; }
-  .btn-primary:hover { filter: brightness(1.05); }
-  .btn-secondary { color: var(--accent); border: 1px solid var(--accent); background: transparent; }
-  
-  .hero-quote { background: rgba(118,88,153,0.12); border-left-color: var(--accent); }
-  
-  /* Apply tokens */
-  body { background: var(--bg); color: var(--text); }
-  .navbar, .project-card, .timeline-content, .contact-form { background: var(--card); }
-  .section-title { color: var(--text); }
-  .nav-link { color: var(--text); }
-  .nav-link:hover { color: var(--accent); }
-  .btn-primary { background: var(--accent); border-color: var(--accent); }
-  .btn-secondary { color: var(--accent); border: 1px solid var(--accent); }
-  .hero-wave svg path { color: var(--surface); } /* uses currentColor */
+    --primary-color: #8bd450;
+    --secondary-color: #734f9a;
+    --accent-color: #41bb42;
+    --text-dark: #e6e9f3;
+    --text-light: #c3c8f5;
+    --bg-light: #161b2d;
+    --bg-white: #10172b;
+    --border-color: rgba(230, 233, 243, 0.18);
+
+    --bg: #0b0e17;
+    --text: #e6e9f3;
+    --muted: #a3acc2;
+    --accent: #8bd450;
+    --surface: #161b2d;
+    --card: #10172b;
+    --border: #1f273e;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.navbar,
+.project-card,
+.timeline-content,
+.contact-form {
+    background: var(--card);
+}
+
+.hero-wave svg path {
+    color: var(--surface);
+}
   
   /* THEME TOGGLE BUTTON */
   .theme-toggle {
