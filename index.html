@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +23,14 @@
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+
+            <!-- Theme toggle -->
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
             <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
@@ -35,18 +39,18 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Hi, I'm <span class="highlight">Ian</span></h1>
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Ian Porto e Mello</span></h1>
                 <h2 class="hero-subtitle">Machine Learning Engineer | Data Engineer | Computer Vision</h2>
-                <p class="hero-description">
-                    “And these children that you spit on
 
-                    As they try to change their worlds
+                <!-- Split into verses -->
+                <blockquote class="hero-quote" cite="David Bowie">
+                    <span class="verse">“And these children that you spit on</span>
+                    <span class="verse">As they try to change their worlds</span>
+                    <span class="verse">Are immune to your consultations</span>
+                    <span class="verse">They're quite aware of what they're goin' through”</span>
+                    <span class="credit">— David Bowie</span>
+                </blockquote>
 
-                    Are immune to your consultations
-
-                    They're quite aware of what they're goin' through”
-                        - David Bowie
-                </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
@@ -58,9 +62,12 @@
                 </div>
             </div>
         </div>
+
         <div class="hero-wave">
-            <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill="currentColor" fill-opacity="1"
+                      d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                </path>
             </svg>
         </div>
     </section>
@@ -72,20 +79,16 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I graduated in Mecathronics / Control and Automation Engineering from the University of Brasilia (UnB) in 2023. This course allowed me to come into contact with many different areas of engineering, such as mechanics, electronics, computer science, and control systems.
-                        Thanks to this interdisciplinary nature of the course, I found my passion for computer science, mainly in machine learning, data engineering and computer vision.
+                        I hold a Bachelor’s degree in Mechatronics / Control and Automation Engineering from the University of Brasília (UnB), completed in 2023. This interdisciplinary program exposed me to a wide range of fields — including mechanics, electronics, computer science, and control systems — and ultimately led me to discover my passion for computer science, particularly in machine learning, data engineering, and computer vision.
                     </p>
                     <p>
-                        Thanks to my background in multiple engineering fields, I have a strong foundation in problem solving and a deep understanding of how to apply engineering principles to real-world problems. The interdisciplinary 
-                        nature of my education has also allowed me to develop a strong ability to bridge the gap between research and development, making sure all teams are aligned and working towards the same goal.
+                        My background across multiple branches of engineering has given me a strong foundation in analytical thinking, systems integration, and problem solving, as well as the ability to apply engineering principles to real-world challenges. This interdisciplinary experience allows me to bridge the gap between research and development, aligning teams and technologies toward common objectives.
                     </p>
                     <p>
-                        I have experience in developing machine learning models, data engineering, and computer vision systems. I have worked with large datasets, and I have a strong understanding of how to apply machine learning and data engineering principles to real-world problems.
+                        I have hands-on experience in developing machine learning models, building data engineering pipelines, and designing computer vision systems for applied environments. My work often involves handling large datasets and transforming research concepts into scalable, production-ready solutions.
                     </p>
                     <p>
-                        Currently, I am a M.Sc candidate in Computer Science at the University of Brasilia (UnB), where I am researching Point Cloud and Mesh processing.
-                        I am also IT Analyst at Banco do Brasil, where I am responsible for the management and maintenance of the company's IT infrastructure accross the country (ATMs, Queue Ticket Terminals, Customer Call Terminals, etc.).
-                        My job involves tracking tens of thousands of machines, rolling out software updates, and troubleshooting issues.
+                        Currently, I am pursuing a Master’s degree in Computer Science at UnB, where my research focuses on 3D data processing, particularly Point Cloud and Mesh analysis. In parallel, I work as an IT Analyst at Banco do Brasil, overseeing the management and maintenance of the bank’s nationwide IT infrastructure — including ATMs, Queue Ticket Dispenser Terminals, and Customer Calling Display Terminals. My responsibilities include monitoring tens of thousands of devices, coordinating software updates, and troubleshooting operational issues to ensure seamless service delivery across the country.
                     </p>
                 </div>
             </div>

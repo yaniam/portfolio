@@ -259,3 +259,39 @@ window.addEventListener('scroll', debounce(() => {
 console.log('%c Portfolio Website Loaded Successfully! 🚀', 'color: #6366f1; font-size: 16px; font-weight: bold;');
 console.log('%c Built with ❤️ for Machine Learning & Data Engineering', 'color: #8b5cf6; font-size: 12px;');
 
+(function () {
+    const KEY = 'theme';
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const icon = btn?.querySelector('i');
+  
+    // Determine starting theme (saved > OS preference > light)
+    const saved = localStorage.getItem(KEY);
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const startTheme = saved || (prefersDark ? 'dark' : 'light');
+    setTheme(startTheme);
+  
+    // Toggle on click
+    btn?.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+      localStorage.setItem(KEY, next);
+    });
+  
+    function setTheme(mode) {
+      root.setAttribute('data-theme', mode);
+      if (!icon) return;
+      if (mode === 'dark') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        btn.setAttribute('aria-label', 'Switch to light mode');
+        btn.title = 'Switch to light mode';
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        btn.setAttribute('aria-label', 'Switch to dark mode');
+        btn.title = 'Switch to dark mode';
+      }
+    }
+  })();
+  
