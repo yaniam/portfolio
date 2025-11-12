@@ -1,6 +1,6 @@
 # Machine Learning & Data Engineering Portfolio
 
-A modern, responsive portfolio website showcasing machine learning and data engineering projects, built for deployment on Netlify.
+A modern, responsive portfolio website showcasing machine learning and data engineering projects, deployed on GitHub Pages.
 
 ## 🚀 Features
 
@@ -21,7 +21,64 @@ A modern, responsive portfolio website showcasing machine learning and data engi
 - **Vanilla JavaScript** - Interactive features without dependencies
 - **Font Awesome** - Professional icons
 
-## 📦 Deployment on Netlify
+## 📦 Deployment on GitHub Pages
+
+This portfolio is configured to deploy automatically to GitHub Pages using GitHub Actions.
+
+### Automatic Deployment
+
+1. **Enable GitHub Pages in Repository Settings**
+   - Go to your repository on GitHub
+   - Click on **Settings** → **Pages**
+   - Under **Source**, select **GitHub Actions**
+   - The site will automatically deploy on every push to the `main` branch
+
+2. **Access Your Site**
+   - Your site will be available at: `https://yourusername.github.io/portfolio_netfly/`
+   - Or if you're using a custom domain: `https://yourcustomdomain.com`
+
+### Manual Setup (First Time)
+
+If this is a new repository:
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/portfolio_netfly.git
+   cd portfolio_netfly
+   ```
+
+2. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push -u origin main
+   ```
+
+3. **Enable GitHub Pages**
+   - Go to repository **Settings** → **Pages**
+   - Select **GitHub Actions** as the source
+   - The workflow will automatically deploy your site
+
+### Custom Domain (Optional)
+
+1. **Add CNAME file** (if using a subdomain like `www`)
+   ```bash
+   echo "www.yourdomain.com" > CNAME
+   git add CNAME
+   git commit -m "Add custom domain"
+   git push
+   ```
+
+2. **Configure DNS**
+   - Add a CNAME record pointing to `yourusername.github.io`
+   - Or add A records pointing to GitHub Pages IP addresses
+
+3. **Update GitHub Pages Settings**
+   - Go to **Settings** → **Pages**
+   - Enter your custom domain
+   - Enable **Enforce HTTPS** (recommended)
+
+## 📦 Alternative: Deployment on Netlify
 
 ### Quick Deploy
 
@@ -29,26 +86,16 @@ A modern, responsive portfolio website showcasing machine learning and data engi
 
 ### Manual Deployment
 
-1. **Fork or Clone this repository**
-   ```bash
-   git clone https://github.com/yourusername/portfolio_netfly.git
-   cd portfolio_netfly
-   ```
-
-2. **Connect to Netlify**
+1. **Connect to Netlify**
    - Sign up/login at [netlify.com](https://netlify.com)
    - Click "Add new site" → "Import an existing project"
    - Connect your Git provider (GitHub, GitLab, Bitbucket)
    - Select this repository
 
-3. **Configure Build Settings**
+2. **Configure Build Settings**
    - Build command: (leave empty - no build needed)
    - Publish directory: `.` (current directory)
    - Click "Deploy site"
-
-4. **Custom Domain (Optional)**
-   - Go to Site settings → Domain management
-   - Add your custom domain
 
 ### Using Netlify CLI
 
