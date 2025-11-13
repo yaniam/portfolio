@@ -23,41 +23,44 @@ A modern, responsive portfolio website showcasing machine learning and data engi
 
 ## 📦 Deployment on GitHub Pages
 
-This portfolio is configured to deploy automatically to GitHub Pages using GitHub Actions.
+This portfolio is configured to deploy automatically to GitHub Pages using GitHub Actions. The workflow deploys to the `gh-pages` branch automatically.
 
 ### Automatic Deployment
 
-1. **Enable GitHub Pages in Repository Settings**
-   - Go to your repository on GitHub
-   - Click on **Settings** → **Pages**
-   - Under **Source**, select **GitHub Actions**
-   - The site will automatically deploy on every push to the `main` branch
+The workflow will run automatically on every push to the `main` branch and deploy your site to GitHub Pages.
 
-2. **Access Your Site**
-   - Your site will be available at: `https://yourusername.github.io/portfolio_netfly/`
-   - Or if you're using a custom domain: `https://yourcustomdomain.com`
+**For Public Repositories (Automatic):**
+- No manual setup required! Just push to `main` and the workflow will:
+  1. Create the `gh-pages` branch automatically
+  2. Deploy your site to GitHub Pages
+  3. GitHub will automatically enable Pages when it detects the `gh-pages` branch
 
-### Manual Setup (First Time)
+**For Private Repositories:**
+- You need a GitHub Pro account to use GitHub Pages with private repositories
+- After the workflow runs, go to **Settings** → **Pages** and select **gh-pages** branch as the source
 
-If this is a new repository:
+### Access Your Site
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/portfolio_netfly.git
-   cd portfolio_netfly
-   ```
+Once deployed, your site will be available at:
+- **URL**: `https://yourusername.github.io/portfolio_netfly/`
+- Or if you're using a custom domain: `https://yourcustomdomain.com`
 
-2. **Push to GitHub**
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push -u origin main
-   ```
+**Note:** It may take a few minutes after the first deployment for the site to become available.
 
-3. **Enable GitHub Pages**
-   - Go to repository **Settings** → **Pages**
-   - Select **GitHub Actions** as the source
-   - The workflow will automatically deploy your site
+### Verify Deployment
+
+1. Go to the **Actions** tab in your repository
+2. Check that the "Deploy to GitHub Pages" workflow completed successfully
+3. After the workflow completes, wait 1-2 minutes, then visit your site URL
+
+### Enable Pages Source (If Needed)
+
+If Pages doesn't automatically enable after the first deployment:
+
+1. Go to repository **Settings** → **Pages**
+2. Under **Source**, select **Deploy from a branch**
+3. Select **gh-pages** branch and **/ (root)** folder
+4. Click **Save**
 
 ### Custom Domain (Optional)
 
