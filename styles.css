@@ -930,6 +930,7 @@ html[data-theme="dark"] .skill-tag {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
+    align-items: start;
 }
 
 .contact-info h3 {
@@ -979,19 +980,44 @@ html[data-theme="dark"] .skill-tag {
     color: var(--contrast);
 }
 
-.contact-form {
+.contact-message-box {
     background: var(--bg-light);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 15px;
     box-shadow: var(--shadow-md);
     transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
     border: 1px solid var(--border-color);
+    height: 100%;
 }
 
-.contact-form:hover {
+.contact-message-box:hover {
     box-shadow: var(--shadow-xl), var(--shadow-glow);
     border-color: var(--contrast);
     transform: translateY(-3px);
+}
+
+.contact-message-box h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.contact-message-box p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.contact-message-box p:last-child {
+    margin-bottom: 0;
+}
+
+.contact-buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .form-group {
