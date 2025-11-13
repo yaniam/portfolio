@@ -1270,7 +1270,21 @@ html[data-theme="dark"] .footer {
     }
 
     .projects-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        overflow-x: visible;
+        scroll-snap-type: none;
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .project-card-detailed {
+        min-width: 100%;
+        max-width: 100%;
     }
 
     .contact-content {
@@ -1283,6 +1297,10 @@ html[data-theme="dark"] .footer {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
     .hero {
         padding: 120px 0 80px;
     }
@@ -1309,6 +1327,23 @@ html[data-theme="dark"] .footer {
 
     .timeline-dot {
         left: -24px;
+    }
+
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .project-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .project-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .project-icon i {
+        font-size: 1.5rem;
     }
 }
 
