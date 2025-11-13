@@ -777,31 +777,11 @@ html[data-theme="dark"] .skill-tag {
 }
 
 .projects-grid {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
-    scroll-snap-type: x mandatory;
 }
 
-.projects-grid::-webkit-scrollbar {
-    height: 8px;
-}
-
-.projects-grid::-webkit-scrollbar-track {
-    background: var(--bg-light);
-    border-radius: 4px;
-}
-
-.projects-grid::-webkit-scrollbar-thumb {
-    background: var(--interactive);
-    border-radius: 4px;
-}
-
-.projects-grid::-webkit-scrollbar-thumb:hover {
-    background: var(--contrast);
-}
 
 .project-card {
     background: var(--bg-white);
@@ -810,14 +790,10 @@ html[data-theme="dark"] .skill-tag {
     box-shadow: var(--shadow-md);
     transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
     border: 1px solid var(--border-color);
-    min-width: 350px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
 }
 
 .project-card-detailed {
-    min-width: 600px;
-    max-width: 800px;
+    grid-column: span 2;
 }
 
 .project-card:hover {
@@ -1011,8 +987,23 @@ html[data-theme="dark"] .highlight-skill {
 .timeline-date {
     color: var(--text-light);
     font-size: 0.9rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-style: italic;
+}
+
+.timeline-skills {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.timeline-skills strong {
+    color: var(--text-dark);
+}
+
+html[data-theme="dark"] .timeline-skills strong {
+    color: #F87F67; /* Coral Reef */
 }
 
 .timeline-content ul {
@@ -1270,21 +1261,12 @@ html[data-theme="dark"] .footer {
     }
 
     .projects-grid {
-        flex-direction: column;
-        overflow-x: visible;
-        scroll-snap-type: none;
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
-    .project-card {
-        min-width: 100%;
-        width: 100%;
-        max-width: 100%;
-    }
-
     .project-card-detailed {
-        min-width: 100%;
-        max-width: 100%;
+        grid-column: span 1;
     }
 
     .contact-content {
