@@ -726,6 +726,41 @@ html[data-theme="dark"] .skill-category h3 {
     box-shadow: var(--shadow-md);
 }
 
+.skill-details {
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.skill-details p {
+    margin-bottom: 1rem;
+}
+
+.skill-details p:last-child {
+    margin-bottom: 0;
+}
+
+.skill-details ul {
+    margin: 0.5rem 0 1rem 1.5rem;
+    padding-left: 0;
+}
+
+.skill-details li {
+    margin-bottom: 0.5rem;
+}
+
+.skill-details strong {
+    color: var(--text-dark);
+}
+
+html[data-theme="dark"] .skill-details strong {
+    color: #F87F67; /* Coral Reef */
+}
+
+.skill-details em {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
 /* Dark theme: skill tags use Battery Charged Blue for shadows, Coral Reef for text */
 html[data-theme="dark"] .skill-tag {
     background: linear-gradient(135deg, rgba(43, 168, 218, 0.3), rgba(43, 168, 218, 0.2)); /* Battery Charged Blue shadow */
@@ -742,9 +777,30 @@ html[data-theme="dark"] .skill-tag {
 }
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    display: flex;
+    flex-direction: row;
     gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+}
+
+.projects-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.projects-grid::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 4px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb {
+    background: var(--interactive);
+    border-radius: 4px;
+}
+
+.projects-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--contrast);
 }
 
 .project-card {
@@ -754,6 +810,14 @@ html[data-theme="dark"] .skill-tag {
     box-shadow: var(--shadow-md);
     transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
     border: 1px solid var(--border-color);
+    min-width: 350px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.project-card-detailed {
+    min-width: 600px;
+    max-width: 800px;
 }
 
 .project-card:hover {
@@ -824,6 +888,58 @@ html[data-theme="dark"] .skill-tag {
 .project-links a:hover {
     color: var(--contrast);
     transform: translateX(5px);
+}
+
+.project-details {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin: 1.5rem 0;
+}
+
+.project-details p {
+    margin-bottom: 1rem;
+}
+
+.project-details p:last-child {
+    margin-bottom: 0;
+}
+
+.project-details ul {
+    margin: 0.5rem 0 1rem 1.5rem;
+    padding-left: 0;
+}
+
+.project-details li {
+    margin-bottom: 0.5rem;
+}
+
+.project-details strong {
+    color: var(--text-dark);
+}
+
+html[data-theme="dark"] .project-details strong {
+    color: #F87F67; /* Coral Reef */
+}
+
+.project-details em {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.highlight-skill {
+    color: var(--interactive);
+    font-weight: 700;
+    font-size: 1em;
+    display: inline;
+    margin: 0;
+}
+
+html[data-theme="light"] .highlight-skill {
+    color: #16537E; /* Darker blue for light theme */
+}
+
+html[data-theme="dark"] .highlight-skill {
+    color: #2BA8DA; /* Battery Charged Blue */
 }
 
 /* ==================== */
