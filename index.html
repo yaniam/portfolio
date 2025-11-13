@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<link rel="stylesheet" href="styles.css?v=20241016">
-<script type="module" src="script.js?v=20241016"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +8,16 @@
     <title>Ian Porto e Mello - ML | Data Engineering | Computer Vision Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KC0252SM8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KC0252SM8B');
+    </script>
+    
     <script>
         (function () {
             const KEY = 'theme';
@@ -20,7 +28,9 @@
                 console.warn('Theme storage unavailable:', err);
             }
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const initial = stored || (prefersDark ? 'dark' : 'light');
+            // Support light and dark themes
+            const validThemes = ['light', 'dark'];
+            const initial = (stored && validThemes.includes(stored)) ? stored : (prefersDark ? 'dark' : 'light');
             document.documentElement.setAttribute('data-theme', initial);
         })();
     </script>
@@ -34,7 +44,6 @@
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
@@ -71,6 +80,7 @@
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="curriculum.html" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> View CV</a>
                 </div>
                 <div class="social-links">
                     <a href="https://github.com/yaniam" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
@@ -82,13 +92,13 @@
 
         <div class="hero-wave">
             <svg viewBox="0 0 2400 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none">
-                <path fill="currentColor" fill-opacity="1"
+                <rect class="wave-bg" width="2400" height="600" fill="var(--surface)"/>
+                <path class="wave-path" fill-opacity="1"
                       d="M0,216L96,246.4C192,276.8,384,337.6,576,348.8C768,362,960,328.8,1152,300.8C1344,273.6,1536,252,1728,268.8C1920,285.6,2112,340.8,2304,338.4C2496,336,2688,276,2784,248L2880,216L2880,600L2784,600C2688,600,2496,600,2304,600C2112,600,1920,600,1728,600C1536,600,1344,600,1152,600C960,600,768,600,576,600C384,600,192,600,96,600L0,600Z">
                 </path>
             </svg>
         </div>
     </section>
-
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -97,7 +107,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I hold a Bachelor’s degree in Mechatronics / Control and Automation Engineering from the University of Brasília (UnB), completed in 2023. This interdisciplinary program exposed me to a wide range of fields — including mechanics, electronics, computer science, and control systems — and ultimately led me to discover my passion for computer science, particularly in machine learning, data engineering, and computer vision.
+                        I hold a Bachelor's degree in Mechatronics / Control and Automation Engineering from the University of Brasília (UnB), completed in 2023. This interdisciplinary program exposed me to a wide range of fields — including mechanics, electronics, computer science, and control systems — and ultimately led me to discover my passion for computer science, particularly in machine learning, data engineering, and computer vision.
                     </p>
                     <p>
                         My background across multiple branches of engineering has given me a strong foundation in analytical thinking, systems integration, and problem solving, as well as the ability to apply engineering principles to real-world challenges. This interdisciplinary experience allows me to bridge the gap between research and development, aligning teams and technologies toward common objectives.
@@ -106,7 +116,7 @@
                         I have hands-on experience in developing machine learning models, building data engineering pipelines, and designing computer vision systems for applied environments. My work often involves handling large datasets and transforming research concepts into scalable, production-ready solutions.
                     </p>
                     <p>
-                        Currently, I am pursuing a Master’s degree in Computer Science at UnB, where my research focuses on 3D data processing, particularly Point Cloud and Mesh analysis. In parallel, I work as an IT Analyst at Banco do Brasil, overseeing the management and maintenance of the bank’s nationwide IT infrastructure — including ATMs, Queue Ticket Dispenser Terminals, and Customer Calling Display Terminals. My responsibilities include monitoring tens of thousands of devices, coordinating software updates, and troubleshooting operational issues to ensure seamless service delivery across the country.
+                        Currently, I am pursuing a Master's degree in Computer Science at UnB, where my research focuses on 3D data processing, particularly Point Cloud and Mesh analysis. In parallel, I work as an IT Analyst at Banco do Brasil, overseeing the management and maintenance of the bank's nationwide IT infrastructure — including ATMs, Queue Ticket Dispenser Terminals, and Customer Calling Display Terminals. My responsibilities include monitoring tens of thousands of devices, coordinating software updates, and troubleshooting operational issues to ensure seamless service delivery across the country.
                     </p>
                 </div>
             </div>
@@ -120,13 +130,13 @@
                 <div class="model-viewer">
                     <div class="model-overlay" id="model-overlay">
                         <div class="loader" role="presentation"></div>
-                        <p>Loading Evangelion Unit-01...</p>
+                        <p>Loading Solid Snake Trophy...</p>
                     </div>
                     <canvas id="model-viewer" aria-label="3D model viewer"></canvas>
                 </div>
                 <p class="model-caption">
-                    <a href="https://sketchfab.com/3d-models/evangelion-unit-01nanoblock-4cae7ee20ebc4559b9d3d2b029b1a140" target="_blank" rel="noopener">
-                        Model by adiobrick on Sketchfab
+                    <a href="https://sketchfab.com/jkimmel694" target="_blank" rel="noopener">
+                        Model by "Uknown Person" on Sketchfab
                     </a>
                 </p>
             </div>
@@ -208,7 +218,6 @@
                     </div>
                 </div>
 
-
                 <div class="project-card">
                     <div class="project-icon">
                         <i class="fas fa-eye"></i>
@@ -242,6 +251,53 @@
                     <div class="project-links">
                         <a href="https://github.com/yaniam" target="_blank"><i class="fab fa-github"></i> Code</a>
                         <a href="https://www.linkedin.com/in/ian-porto-mello" target="_blank"><i class="fas fa-external-link-alt"></i> Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="projects">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Sistema de aprendizado de máquina para tipificação de incêndios florestais na Amazônia</h3>
+                    <p>Machine learning approach that classifies wildfire patterns in the Amazon using temporal data to support proactive environmental response.</p>
+                    <div class="project-tags">
+                        <span>Temporal ML</span>
+                        <span>Wildfire Detection</span>
+                        <span>Amazon</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Sistema para a identificação de aglomerações em Redes IoT e Fog Computing</h3>
+                    <p>Edge intelligence framework that identifies crowd formations through computer vision and distributed IoT sensing.</p>
+                    <div class="project-tags">
+                        <span>Computer Vision</span>
+                        <span>IoT</span>
+                        <span>Edge AI</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Sistema monitor de aglomerações baseado em reconhecimento de padrões</h3>
+                    <p>Pattern-recognition system that estimates social distancing metrics across IoT networks structured in Fog Computing environments.</p>
+                    <div class="project-tags">
+                        <span>Pattern Recognition</span>
+                        <span>Social Analytics</span>
+                        <span>Fog Computing</span>
                     </div>
                 </div>
             </div>
@@ -334,49 +390,46 @@
         </div>
     </section>
 
-    <!-- Publications Section -->
-    <section id="publications" class="projects">
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Publications</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>Sistema de aprendizado de máquina para tipificação de incêndios florestais na Amazônia</h3>
-                    <p>Machine learning approach that classifies wildfire patterns in the Amazon using temporal data to support proactive environmental response.</p>
-                    <div class="project-tags">
-                        <span>Temporal ML</span>
-                        <span>Wildfire Detection</span>
-                        <span>Amazon</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>Sistema para a identificação de aglomerações em Redes IoT e Fog Computing</h3>
-                    <p>Edge intelligence framework that identifies crowd formations through computer vision and distributed IoT sensing.</p>
-                    <div class="project-tags">
-                        <span>Computer Vision</span>
-                        <span>IoT</span>
-                        <span>Edge AI</span>
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out through any of the channels below.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:ianporto25@gmail.com">ianporto25@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://linkedin.com/in/ian-porto-mello" target="_blank">LinkedIn Profile</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/yaniam" target="_blank">GitHub Profile</a>
+                        </div>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-book"></i>
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
                     </div>
-                    <h3>Sistema monitor de aglomerações baseado em reconhecimento de padrões</h3>
-                    <p>Pattern-recognition system that estimates social distancing metrics across IoT networks structured in Fog Computing environments.</p>
-                    <div class="project-tags">
-                        <span>Pattern Recognition</span>
-                        <span>Social Analytics</span>
-                        <span>Fog Computing</span>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                    </div>
+                    <input type="hidden" name="_next" value="YOUR_SITE_URL">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission">
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
@@ -395,46 +448,105 @@
             "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.149.0/examples/jsm/"
           }
         }
-        </script>
+    </script>
     <script>
         (function () {
             const KEY = 'theme';
             const root = document.documentElement;
-            const btn = document.getElementById('theme-toggle');
+            const themeBtn = document.getElementById('theme-toggle');
 
-            if (!btn) return;
+            if (!themeBtn) return;
 
-            const icon = btn.querySelector('i');
-            const updateIcon = (mode) => {
-                if (!icon) return;
+            const themeIcon = themeBtn.querySelector('i');
+            
+            // Update theme toggle icon based on current theme
+            const updateThemeIcon = (mode) => {
+                if (!themeIcon) return;
                 if (mode === 'dark') {
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
-                    btn.setAttribute('aria-label', 'Switch to light mode');
-                    btn.title = 'Switch to light mode';
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    themeBtn.setAttribute('aria-label', 'Switch to light mode');
+                    themeBtn.title = 'Switch to light mode';
                 } else {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                    btn.setAttribute('aria-label', 'Switch to dark mode');
-                    btn.title = 'Switch to dark mode';
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    themeBtn.setAttribute('aria-label', 'Switch to dark mode');
+                    themeBtn.title = 'Switch to dark mode';
                 }
             };
 
-            const applied = root.getAttribute('data-theme') || 'light';
-            updateIcon(applied);
-
-            btn.addEventListener('click', () => {
-                const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-                const next = current === 'dark' ? 'light' : 'dark';
-                root.setAttribute('data-theme', next);
-                updateIcon(next);
+            // Set theme function
+            const setTheme = (theme) => {
+                root.setAttribute('data-theme', theme);
+                updateThemeIcon(theme);
                 try {
-                    localStorage.setItem(KEY, next);
+                    localStorage.setItem(KEY, theme);
                 } catch (err) {
                     console.warn('Unable to persist theme:', err);
                 }
+            };
+
+            // Initialize theme from storage or default
+            const stored = localStorage.getItem(KEY);
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initial = stored || (prefersDark ? 'dark' : 'light');
+            setTheme(initial);
+
+            // Theme toggle button: cycles between light and dark
+            themeBtn.addEventListener('click', () => {
+                const current = root.getAttribute('data-theme');
+                if (current === 'dark') {
+                    setTheme('light');
+                } else {
+                    setTheme('dark');
+                }
             });
         })();
+
+        // Contact form handler with success/error feedback
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+                
+                try {
+                    const formData = new FormData(this);
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        submitButton.textContent = 'Message Sent! ✓';
+                        submitButton.style.background = 'var(--accent-color)';
+                        this.reset();
+                        setTimeout(() => {
+                            submitButton.textContent = originalText;
+                            submitButton.disabled = false;
+                            submitButton.style.background = '';
+                        }, 3000);
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    submitButton.textContent = 'Error - Try Again';
+                    submitButton.style.background = '#dc3545';
+                    setTimeout(() => {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                        submitButton.style.background = '';
+                    }, 3000);
+                }
+            });
+        }
     </script>
     <script type="module" src="script.js"></script>
 </body>

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Wii - Super Smash Bros Brawl - Solid Snake Troph
+* source:	https://sketchfab.com/3d-models/wii-super-smash-bros-brawl-solid-snake-troph-33855d06fcbe4daa947c6474b352ad80
+* author:	Waffles (https://sketchfab.com/jkimmel694)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Wii - Super Smash Bros Brawl - Solid Snake Troph" (https://sketchfab.com/3d-models/wii-super-smash-bros-brawl-solid-snake-troph-33855d06fcbe4daa947c6474b352ad80) by Waffles (https://sketchfab.com/jkimmel694) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
