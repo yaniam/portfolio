@@ -183,7 +183,7 @@ if ('IntersectionObserver' in window) {
 }
 
 // ==================== //
-// EVA-01 Three.js Viewer
+// Solid Snake Trophy Three.js Viewer
 // ==================== //
 const modelCanvas = document.getElementById('model-viewer');
 const modelOverlay = document.getElementById('model-overlay');
@@ -194,7 +194,7 @@ if (modelCanvas) {
     scene.background = null;
 
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.set(0.8, 1.6, 4.2);
+    camera.position.set(0, 0, 5);
 
     const renderer = new THREE.WebGLRenderer({
         canvas: modelCanvas,
@@ -214,37 +214,71 @@ if (modelCanvas) {
     controls.enableZoom = false;
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.6;
-    controls.minDistance = 2;
-    controls.maxDistance = 9;
+    controls.minDistance = 1;
+    controls.maxDistance = 10;
+    controls.target.set(0, 0, 0);
 
-    const hemi = new THREE.HemisphereLight(0xffffff, 0x1a1a25, 1.1);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x1a1a25, 1.5);
     scene.add(hemi);
 
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.1);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.5);
     keyLight.position.set(6, 10, 8);
     keyLight.castShadow = true;
     keyLight.shadow.mapSize.set(2048, 2048);
     scene.add(keyLight);
 
-    const loader = new GLTFLoader().setPath('evangelion-unit_01nanoblock/');
+    // Add an ambient light for better visibility
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const loader = new GLTFLoader().setPath('wii_-_super_smash_bros_brawl_-_solid_snake_troph/');
     loader.load(
         'scene.gltf',
         (gltf) => {
+            console.log('Model loaded successfully:', gltf);
             const model = gltf.scene;
+            
+            // Traverse and log all meshes
+            model.traverse((child) => {
+                if (child.isMesh) {
+                    console.log('Mesh found:', child.name, child.position, child.scale);
+                    // Ensure material is visible
+                    if (child.material) {
+                        child.material.transparent = false;
+                        child.material.opacity = 1;
+                        console.log('Material:', child.material);
+                    }
+                }
+            });
+            
             normalizeModel(model);
             scene.add(model);
+
+            // Update camera after model is normalized
+            const box = new THREE.Box3().setFromObject(model);
+            const size = box.getSize(new THREE.Vector3());
+            const center = box.getCenter(new THREE.Vector3());
+            console.log('Final model bounds - Size:', size, 'Center:', center);
+            
+            controls.target.copy(center);
+            camera.position.set(center.x, center.y, center.z + Math.max(size.x, size.y, size.z) * 1.5);
+            camera.lookAt(center);
+            controls.update();
+            camera.updateProjectionMatrix();
 
             if (modelOverlay) {
                 modelOverlay.classList.add('hidden');
             }
         },
-        undefined,
+        (progress) => {
+            console.log('Loading progress:', progress);
+        },
         (error) => {
-            console.error('Failed to load Evangelion Unit-01 model:', error);
+            console.error('Failed to load Solid Snake Trophy model:', error);
             if (modelOverlay) {
                 const message = modelOverlay.querySelector('p');
                 if (message) {
-                    message.textContent = 'Unable to load Evangelion Unit-01';
+                    message.textContent = 'Unable to load Solid Snake Trophy: ' + error.message;
                 }
             }
         }
@@ -254,21 +288,21 @@ if (modelCanvas) {
         const box = new THREE.Box3().setFromObject(model);
         const size = box.getSize(new THREE.Vector3());
         const center = box.getCenter(new THREE.Vector3());
+        
+        console.log('Model size:', size);
+        console.log('Model center:', center);
+        
+        // Center the model at origin
         model.position.sub(center);
 
+        // Scale to fit in a reasonable view - make it larger
         const maxAxis = Math.max(size.x, size.y, size.z);
-        const scale = 3 / maxAxis;
+        const scale = maxAxis > 0 ? 1.5 / maxAxis : 1;
         model.scale.setScalar(scale);
 
-        const finalHeight = size.y * scale;
-        const yLift = finalHeight * 0.4;
-        model.position.y += yLift;
-
-        const targetY = finalHeight * 0.1;
-        controls.target.set(0, targetY, 0);
-        camera.position.set(1, targetY + finalHeight * 0.18, 5.6);
-        camera.updateProjectionMatrix();
-        controls.update();
+        console.log('Model scaled by:', scale);
+        console.log('Model position after normalization:', model.position);
+        console.log('Scaled size:', size.multiplyScalar(scale));
     }
 
     function resizeRenderer() {
