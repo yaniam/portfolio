@@ -201,52 +201,79 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card project-card-detailed">
                     <div class="project-icon">
                         <i class="fas fa-fire"></i>
                     </div>
-                    <h3>Amazon Wildfire Early Warning System</h3>
-                    <p>Led temporal modeling of satellite and meteorological data to detect fire outbreaks sooner, supporting sustainable monitoring operations across the Amazon rainforest.</p>
-                    <div class="project-tags">
-                        <span>PyTorch</span>
-                        <span>Satellite Data</span>
-                        <span>Temporal Models</span>
-                        <span>Near Real Time Detection</span>
+                    <h3>Amazon Wildfire Classification Project</h3>
+                    <div class="project-details">
+                        <p><strong>Machine Learning / Deep Learning:</strong> Long Short-Term Memory (LSTM) networks for temporal pattern recognition.</p>
+                        <p><strong>Programming & Frameworks:</strong> <span class="highlight-skill">Python</span>, <span class="highlight-skill">PyTorch</span>, <span class="highlight-skill">Scikit-Learn</span>.</p>
+                        <p><strong>Data Sources:</strong></p>
+                        <ul>
+                            <li>CENSIPAM (Painel do Fogo) – operational fire monitoring in the Amazon.</li>
+                            <li>GFED (Global Fire Emissions Database) – historical classification dataset.</li>
+                            <li>Remote Sensing Data from NASA satellites (VIIRS, MODIS, NOAA-20, Suomi NPP).</li>
+                        </ul>
+                        <p><strong>Data Processing:</strong></p>
+                        <ul>
+                            <li>Time-series structuring, padding, normalization, feature engineering.</li>
+                            <li>Integration of shapefiles and geospatial layers (<span class="highlight-skill">QGIS</span>, <span class="highlight-skill">GeoPandas</span>, <span class="highlight-skill">Pandas</span>).</li>
+                        </ul>
+                        <p><strong>Output:</strong> Automatic classification into four fire categories (savanna/pasture, small clearings, sub-canopy, deforestation).</p>
+                        <p><strong>Goal:</strong> Integrate the AI model into Painel do Fogo to provide near real-time classification and alert generation</p>
                     </div>
                     <div class="project-links">
                         <a href="https://bdm.unb.br/handle/10483/39734" target="_blank"><i class="fas fa-book"></i> Publication</a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card project-card-detailed">
                     <div class="project-icon">
                         <i class="fas fa-eye"></i>
                     </div>
                     <h3>Crowd Density Estimation and Social Distancing Analytics</h3>
-                    <p>Developed embedded vision modules for the UnB IoT Research Group, estimating crowd density and social distancing metrics directly on edge devices.</p>
-                    <div class="project-tags">
-                        <span>Computer Vision</span>
-                        <span>TensorFlow</span>
-                        <span>Edge AI</span>
-                        <span>Fog Computing</span>
+                    <div class="project-details">
+                        <p><strong>Main Objective:</strong></p>
+                        <p>Development of a low-cost IoT system based on Fog Computing for real-time crowd detection using computer vision to support social distancing monitoring during the COVID-19 pandemic.</p>
+                        <p><em>ristie47</em></p>
+                        <p><strong>Core Topics & Technologies:</strong></p>
+                        <ul>
+                            <li><strong>Computer Vision:</strong> <span class="highlight-skill">YOLOv4-Tiny</span> neural network for real-time person detection.</li>
+                            <li><strong>Machine Learning:</strong> Pattern recognition and distance estimation.</li>
+                            <li><strong>IoT & Fog Computing:</strong> Distributed architecture using SBCs (Raspberry Pi, Jetson Nano) for edge processing.</li>
+                            <li><strong>Middleware & Scalability:</strong> Event-driven architecture using Apache Kafka for reliable, asynchronous communication.</li>
+                            <li><strong>Applications:</strong> Smart monitoring in public and private spaces without cloud dependency.</li>
+                        </ul>
+                        <p><strong>Key Benefit:</strong> Reduces latency, bandwidth cost, and dependency on data centers by performing on-site inference and decision making.</p>
+                        <p><strong>Conclusions:</strong></p>
+                        <ul>
+                            <li>Successfully demonstrated an edge-based computer vision system capable of real-time crowd monitoring with reduced infrastructure cost.</li>
+                            <li>Scalable, resilient, and efficient for regions with unstable connectivity.</li>
+                        </ul>
                     </div>
                     <div class="project-links">
                         <a href="https://ciawi-conf.org/wp-content/uploads/2021/11/19.2-01.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card project-card-detailed">
                     <div class="project-icon">
                         <i class="fas fa-cubes"></i>
                     </div>
                     <h3>Point Cloud Quality Assessment Research</h3>
-                    <p>Exploring objective metrics for evaluating point cloud and mesh fidelity during an M.Sc. at the University of Brasília, focusing on immersive media quality.</p>
-                    <div class="project-tags">
-                        <span>Open3D</span>
-                        <span>Point Clouds</span>
-                        <span>Meshes</span>
-                        <span>Objective Metrics</span>
-                        <span>Research</span>
+                    <div class="project-details">
+                        <p><strong>Main Objective:</strong></p>
+                        <p>Developing objective 3D Quality Assessment metrics that estimate human visual perception of distortion in point clouds and meshes, bridging gaps between computer vision, 3D geometry processing, and psychovisual modeling.</p>
+                        <p><strong>Core Topics & Technologies:</strong></p>
+                        <ul>
+                            <li><strong>3D Data Processing:</strong> Point clouds, meshes, saliency detection, spatial slicing.</li>
+                            <li><strong>Quality Metrics:</strong> Color and Texture descriptors.</li>
+                            <li><strong>Saliency Modulation:</strong> Quartile-based region weighting to mimic visual attention.</li>
+                            <li><strong>Machine Learning:</strong> Statistical regression against MOS (Mean Opinion Scores).</li>
+                            <li><strong>Datasets:</strong> SJTU-TMQA, LS-PCQA, WPC, TSMD.</li>
+                        </ul>
+                        <p><strong>Goal:</strong> Create metrics that correlate better with human judgment while remaining lightweight and interpretable for real-time 3D rendering and immersive media evaluation.</p>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/yaniam" target="_blank"><i class="fab fa-github"></i> Code</a>
